@@ -2,25 +2,26 @@ package com.epam.mjc.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
 
 
 public class FileReader {
 
     public Profile getDataFromFile(File file) {
-        String res = "";
-        String[][] newArr;
+        StringBuilder res = new StringBuilder();
         Profile profile = new Profile();
         try (FileInputStream fs = new FileInputStream(file)) {
             int c;
             while ((c = fs.read()) != -1) {
-                res += (char) c;
+                res.append((char) c);
             }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String[] arr = res.split("\\r?\\n|\\r");
+        String[] arr = res.toString().split("\\r?\\n|\\r");
         for (int i = 0; i < arr.length; i++) {
             String[] str = arr[i].split(": ");
             switch (str[0]) {

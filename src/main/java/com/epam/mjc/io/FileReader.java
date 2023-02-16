@@ -16,10 +16,8 @@ public class FileReader {
             while ((c = fs.read()) != -1) {
                 res.append((char) c);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("File not found or it cannot be read");
         }
         String[] arr = res.toString().split("\\r?\\n|\\r");
         for (int i = 0; i < arr.length; i++) {

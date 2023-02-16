@@ -2,7 +2,6 @@ package com.epam.mjc.io;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -17,7 +16,7 @@ public class FileReader {
                 res.append((char) c);
             }
         } catch (IOException e) {
-            throw new RuntimeException("File not found or it cannot be read");
+            throw new SomeException("Something happened");
         }
         String[] arr = res.toString().split("\\r?\\n|\\r");
         for (int i = 0; i < arr.length; i++) {

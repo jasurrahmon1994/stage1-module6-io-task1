@@ -28,6 +28,8 @@ public class FileReader {
                 case "Age": profile.setAge(Integer.parseInt(str[1])); break;
                 case "Email": profile.setEmail(str[1]); break;
                 case "Phone": profile.setPhone(Long.parseLong(str[1])); break;
+                default:
+                    break;
             }
         }
 
